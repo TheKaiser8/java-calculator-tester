@@ -2,6 +2,7 @@ package calculator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
@@ -31,6 +32,12 @@ class CalculatorTest {
     void divide() {
         result = calc.divide(100, 10);
         Assertions.assertEquals(10, result, "Il risultato della divisione deve essere 10");
+    }
+
+    @Test
+    @DisplayName("Test fallisci divisione se il divisore è == 0")
+    void failDivide() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> calc.divide(100, 0), "Deve sollevare IllegalArgumentException per divisione per zero");
     }
 
     @Test
